@@ -88,13 +88,13 @@ tmux_conf_theme_colour_1="#080808"    # dark gray
 tmux_conf_theme_colour_2="#303030"    # gray
 tmux_conf_theme_colour_3="#8a8a8a"    # light gray
 tmux_conf_theme_colour_4="#00afff"    # light blue
-tmux_conf_theme_colour_5="#ffff00"    # yellow
+tmux_conf_theme_colour_5="#f67400"    # orange
 tmux_conf_theme_colour_6="#080808"    # dark gray
 tmux_conf_theme_colour_7="#e4e4e4"    # white
 tmux_conf_theme_colour_8="#080808"    # dark gray
 tmux_conf_theme_colour_9="#ffff00"    # yellow
 tmux_conf_theme_colour_10="#ff00af"   # pink
-tmux_conf_theme_colour_11="#5fff00"   # green
+tmux_conf_theme_colour_11="#1cdc9a"   # green
 tmux_conf_theme_colour_12="#8a8a8a"   # light gray
 tmux_conf_theme_colour_13="#e4e4e4"   # white
 tmux_conf_theme_colour_14="#080808"   # dark gray
@@ -140,14 +140,14 @@ tmux_conf_theme_pane_border_style=thin
 
 # pane borders colours:
 tmux_conf_theme_pane_border="$tmux_conf_theme_colour_2"
-tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_4"
+tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_11"
 %if #{>=:#{version},3.2}
 tmux_conf_theme_pane_active_border="#{?pane_in_mode,$tmux_conf_theme_colour_9,#{?synchronize-panes,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_4}}"
 %endif
 
 # pane indicator colours (when you hit <prefix> + q)
-tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
-tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
+tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_5"
+tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_5"
 
 # status line style
 tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
@@ -209,7 +209,7 @@ tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
+tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_11"
 tmux_conf_theme_window_status_current_attr="bold"
 tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
 #tmux_conf_theme_window_status_current_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
@@ -226,7 +226,7 @@ tmux_conf_theme_window_status_bell_bg="default"
 tmux_conf_theme_window_status_bell_attr="blink,bold"
 
 # window last status style
-tmux_conf_theme_window_status_last_fg="$tmux_conf_theme_colour_4"
+tmux_conf_theme_window_status_last_fg="$tmux_conf_theme_colour_11"
 tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_2"
 tmux_conf_theme_window_status_last_attr="none"
 
@@ -267,18 +267,17 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
-
+tmux_conf_theme_status_left=" ❐ #S "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}, %R , %d %b |#{git_repo #{pane_current_path}},#{git_branch #{pane_current_path}}| #{username}#{root} | #{hostname} | #{filesystem #{pane_current_path}} "
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
-tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_17"
-tmux_conf_theme_status_right_attr="none,none,bold"
+tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_14"
+tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_2,$tmux_conf_theme_colour_4,$tmux_conf_theme_colour_17"
+tmux_conf_theme_status_right_attr="none,none,none,bold"
 
 # pairing indicator
 tmux_conf_theme_pairing="⚇"                 # U+2687
@@ -361,7 +360,7 @@ tmux_conf_theme_clock_style="24"
 #   - false (default)
 #   - disabled
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- urlscan -------------------------------------------------------------------
@@ -386,11 +385,11 @@ tmux_conf_urlscan_options="--compact --dedupe"
 #set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
@@ -398,6 +397,21 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # move status line to top
 #set -g status-position top
 
+# make tmux messages stay longer
+set -g display-time 3000
+
+# set parent-host of tmux-server
+%if #{==:#{TMUX_PARENT_HOST},}
+  run '$TMUX_PROGRAM set-environment -g TMUX_PARENT_HOST #h'
+%endif
+
+# update environments
+set -g update-environment "DISPLAY"
+
+set-hook -ag session-created 'run "$TMUX_PROGRAM showenv -g | sed -n \"s\/^KRB5CCNAME=\/\/p\" | xargs $TMUX_PROGRAM setenv -t #S KRB5CCNAME"'
+
+# experimental hook
+set-hook -ag after-select-pane 'run "[ $TMUX_PARENT_HOST = #h ] && export $($TMUX_PROGRAM showenv -g DISPLAY)"'
 
 # -- tpm -----------------------------------------------------------------------
 
@@ -440,6 +454,11 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
+## Yank plugin
+#set -g @plugin 'tmux-plugins/tmux-yank'
+#set -g @yank_with_mouse on
+#set -g @yank_selection_mouse 'clipboard'
+
 
 # -- custom variables ----------------------------------------------------------
 
@@ -475,6 +494,24 @@ tmux_conf_uninstall_plugins_on_reload=true
 # wan_ip_v6() {
 #   curl -f -s -m 2 -6 ifconfig.me
 #   sleep 300                                         # sleep for 5 minutes, throttle network requests whatever the value of status-interval
+# }
+#
+# git_repo() {
+#   if git -C $1 rev-parse 2> /dev/null ; then
+#     printf " %s " \
+#       $(git -C $1 remote get-url origin \
+#           | sed -e 's/^.*\(.*\/\)//' -e 's/\.git$//')
+#   fi
+# }
+#
+# git_branch() {
+#   if git -C $1 rev-parse 2> /dev/null ; then
+#     printf " %s " $(git -C $1 rev-parse --abbrev-ref HEAD)
+#   fi
+# }
+#
+# filesystem() {
+#   stat -f -t -L -c %T $1
 # }
 #
 # "$@"
