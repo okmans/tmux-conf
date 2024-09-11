@@ -270,7 +270,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}, %R , %d %b |#{git_repo #{pane_current_path}},#{git_branch #{pane_current_path}}| #{username}#{root} | #{hostname} | #{filesystem #{pane_current_path}} "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}, %R , %d %b |#{git_repo #{pane_current_path}},#{git_branch #{pane_current_path}}| #{username}#{root} | #{hostname} |"
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
 tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
