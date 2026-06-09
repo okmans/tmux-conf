@@ -31,6 +31,7 @@ tmux_conf_new_session_prompt=false
 #   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_retain_current_path=false
 
+set -g default-shell "/usr/bin/fish"
 
 # -- windows & pane creation ---------------------------------------------------
 
